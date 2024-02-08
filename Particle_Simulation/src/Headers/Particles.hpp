@@ -12,8 +12,9 @@ public:
 
 	void physicsUpdate(float dt, sf::Vector2f windowSize);
 	void wallCollision(sf::Vector2f _windowSize);
-	// Return the kinetic energy of the particle
+	// Returns the kinetic energy of the particle
 	float getSpeed();
+ // Returns the kinetic energy of the particle
 	float getEnergy();
 private:
 	sf::Vector2f m_prevPos, m_acc, G = sf::Vector2f(0, 200);
