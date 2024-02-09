@@ -15,6 +15,8 @@ public:
 private:
 	void loadTexture();
 
+	Physics physics;
+
 	sf::Texture m_particleTex;
 	sf::Vector2f m_TexSize;
 	sf::VertexArray m_displayParticles;

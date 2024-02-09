@@ -2,16 +2,17 @@
 
 void Particle::physicsUpdate(float dt, sf::Vector2f windowSize)
 {
-	m_v = m_pos - m_prevPos;
-
 	wallCollision(windowSize);
 
-	m_acc = G + (m_force / m_mass);
+	//m_acc = G + (m_force / m_mass);
+	m_acc = { 0, 0 };
 
 	// Verlet Integration
 	const sf::Vector2f tempPos = m_pos;
 	m_pos = m_pos + m_v + m_acc * dt * dt;
 	m_prevPos = tempPos;
+
+	m_v = m_pos - m_prevPos;
 
 	m_force = { 0, 0 };
 }

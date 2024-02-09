@@ -15,7 +15,7 @@ sf::Vector2f _windowSize;
 sf::Font _arial;
 sf::Vector2i _mousePos;
 // Particle radius
-float _radius = 2.0f;
+float _radius = 5.0f;
 // Particle mass
 float _mass = 10.0f;
 // Pointer to particles
@@ -41,7 +41,7 @@ int main() {
 	Loop loop;
 
 	// Renderer
-	Renderer renderer(10000);
+	Renderer renderer(10);
 
 	sf::Text fpsText;
 	setupfps(&fpsText);

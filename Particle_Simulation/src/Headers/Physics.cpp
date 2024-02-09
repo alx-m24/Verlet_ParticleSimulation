@@ -1,17 +1,25 @@
 #include "Physics.hpp"
 
-void updatePhysics(float dt)
+Physics::Physics()
+{
+	grid = new Grid();
+}
+
+void Physics::updatePhysics(float dt)
 {
 	float sub_dt = dt / substeps;
 
-	for (Particle* p : *particles) {
-		for (int j = 0; j < substeps; ++j) {
+	for (int j = 0; j < substeps; ++j) {
+		grid->reset();
+		grid->checkCollision();
+		for (Particle* p : *particles) {
+
 			p->physicsUpdate(sub_dt, _windowSize);
 		}
 	}
 }
 
-bool inBounds(Particle* p)
+bool Physics::inBounds(Particle* p)
 {
 	return (p->m_pos.x > _radius && p->m_pos.y > _radius) && (p->m_pos.x < _windowSize.x - _radius && p->m_pos.y < _windowSize.y - _radius);
 }

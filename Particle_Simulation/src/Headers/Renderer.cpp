@@ -12,7 +12,7 @@ Renderer::Renderer(unsigned int particleCount)
 		sf::Vector2f pos = sf::Vector2f(rand() % (int)_windowSize.x, rand() % (int)_windowSize.y);
 		
 		Particle* newParticle = new Particle(pos, sf::Color::Red, _radius);
-		if (!inBounds(newParticle)) {
+		if (!physics.inBounds(newParticle)) {
 			delete newParticle;
 			continue;
 		}
@@ -39,7 +39,7 @@ void Renderer::update(float dt)
 	// -- Debugging -- //
 	float T_Energy = 0;
 
-	updatePhysics(dt);
+	physics.updatePhysics(dt);
 
 	int count = m_particles.size();
 
@@ -48,7 +48,7 @@ void Renderer::update(float dt)
 	for (int i = 0; i < count; ++i) {
 		Particle* curr = m_particles[i];
 		
-		if (!inBounds(curr)) continue;
+		if (!physics.inBounds(curr)) continue;
 
 		// -- Debugging -- //
 		T_Energy += curr->getEnergy();
